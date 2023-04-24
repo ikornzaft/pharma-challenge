@@ -1,5 +1,5 @@
 import { NextPage } from 'next';
-import { Layout } from '@/components';
+import { EditComponent, Layout } from '@/components';
 import { useRouter } from 'next/router';
 import { useContext, useEffect, useState } from 'react';
 import { ItemsContext } from '@/context';
@@ -35,7 +35,7 @@ const EditPage: NextPage = () => {
         itemToEdit ? `- Editando ${itemToEdit.nombre}` : ''
       }  `}
     >
-      <div>NOMBRE</div>
+      {itemToEdit && <EditComponent item={itemToEdit as Item} />}
     </Layout>
   );
 };
