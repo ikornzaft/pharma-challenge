@@ -1,10 +1,10 @@
-import { Layout, ListContainer, ListItem } from '@/components';
-import { ItemsContext } from '@/context/items';
 import { useContext } from 'react';
+import { NextPage } from 'next';
+import { ItemsContext } from '@/context/items';
+import { Layout, ListContainer, ListItem } from '@/components';
 
-export default function Home() {
+const Home: NextPage = ({}) => {
   const { items } = useContext(ItemsContext);
-  console.log(items);
   return (
     <Layout>
       <ListContainer>
@@ -14,4 +14,6 @@ export default function Home() {
       </ListContainer>
     </Layout>
   );
-}
+};
+
+export default Home;

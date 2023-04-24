@@ -10,7 +10,7 @@ const ListWrapper = styled.div`
   justify-content: flex-start;
   align-items: center;
   flex-direction: column;
-  gap: 10px;
+  gap: 20px;
 `;
 
 export const ListContainer: FC<Props> = ({ children }) => {
