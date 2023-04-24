@@ -38,6 +38,7 @@ export const ItemsProvider: FC<Props> = ({ children }) => {
       toast.success('Item creado correctamente', {
         autoClose: 2000,
       });
+      getAllItems();
       setTimeout(() => {
         router.push('/');
       }, 2100);
@@ -56,6 +57,7 @@ export const ItemsProvider: FC<Props> = ({ children }) => {
       toast.success('Item modificado correctamente', {
         autoClose: 2000,
       });
+      getAllItems();
       setTimeout(() => {
         router.push(`/item/${item.id}`);
       }, 2100);
