@@ -35,6 +35,7 @@ export const ItemComponent: FC<Props> = ({ item }) => {
   return (
     <ItemWrapper>
       <ItemTitle>{item.nombre}</ItemTitle>
+      <ItemDescription>{item.codigo}</ItemDescription>
       <ItemDescription>{item.descripcion}</ItemDescription>
     </ItemWrapper>
   );

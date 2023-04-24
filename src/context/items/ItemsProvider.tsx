@@ -1,8 +1,10 @@
 import React, { FC, useEffect, useReducer } from 'react';
+import { toast } from 'react-toastify';
 import { itemsReducer } from './itemsReducer';
 import { ItemsContext } from './ItemsContext';
 import { Item } from '../../interfaces';
 import { itemsApi } from '@/apis';
+import { useRouter } from 'next/router';
 
 export interface ItemsState {
   items: Item[];
@@ -18,6 +20,7 @@ const Items_INITIAL_STATE = {
 
 export const ItemsProvider: FC<Props> = ({ children }) => {
   const [state, dispatch] = useReducer(itemsReducer, Items_INITIAL_STATE);
+  const router = useRouter();
 
   useEffect(() => {
     getAllItems();
@@ -29,7 +32,19 @@ export const ItemsProvider: FC<Props> = ({ children }) => {
   };
 
   const addNewItem = async (item: Item) => {
-    console.log('Add new item');
+    try {
+      const res = await itemsApi.post('v1/item', item);
+      dispatch({ type: '[ITEMS] ADD ITEM', payload: item });
+      toast.success('Item creado correctamente', {
+        autoClose: 2000,
+      });
+      router.push('/');
+    } catch (error) {
+      toast.error('Error creando el item', {
+        autoClose: 2000,
+      });
+      console.log(error);
+    }
   };
 
   return (
