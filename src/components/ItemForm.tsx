@@ -1,6 +1,7 @@
 import { Item } from '@/interfaces';
 import React, { FC } from 'react';
 import styled from 'styled-components';
+import { CustomInput } from './common';
 
 interface Props {
   handleSubmit: React.FormEventHandler<HTMLFormElement>;
@@ -19,16 +20,16 @@ const Form = styled.form`
 export const ItemForm: FC<Props> = ({ handleSubmit, values, setValues }) => {
   return (
     <Form onSubmit={handleSubmit}>
-      <input
+      <CustomInput
+        onChange={(e) =>
+          setValues((prev) => ({ ...prev, codigo: e.target.value }))
+        }
         type="text"
         placeholder="Código del producto"
         value={values.codigo}
         required
-        onChange={(e) =>
-          setValues((prev) => ({ ...prev, codigo: e.target.value }))
-        }
       />
-      <input
+      <CustomInput
         type="text"
         placeholder="Nombre del producto"
         value={values.nombre}

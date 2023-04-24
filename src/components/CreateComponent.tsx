@@ -1,6 +1,5 @@
 import React, { FC, useContext, useState } from 'react';
 import { ItemForm } from './';
-import { Item } from '@/interfaces';
 import { ItemsContext } from '@/context';
 
 const emptyValues = {
@@ -33,12 +32,3 @@ export const CreateComponent: FC = () => {
     </div>
   );
 };
-
-// id: string;
-// nombre: string;
-// forma_farmaceutica: string;
-// fabricante: string;
-// procedencia: string;
-// titular: string;
-// descripcion: string;
-// imagen: string;
