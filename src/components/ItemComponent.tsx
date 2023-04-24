@@ -36,7 +36,7 @@ export const ItemComponent: FC<Props> = ({ item }) => {
   const router = useRouter();
 
   const handleClick = () => {
-    router.push(`/modify/${item.id}`);
+    router.push(`/edit/${item.id}`);
   };
   return (
     <ItemWrapper>
