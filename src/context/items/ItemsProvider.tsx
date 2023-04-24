@@ -33,7 +33,7 @@ export const ItemsProvider: FC<Props> = ({ children }) => {
   };
 
   return (
-    <ItemsContext.Provider value={{ ...state, addNewItem }}>
+    <ItemsContext.Provider value={{ ...state, addNewItem, getAllItems }}>
       {children}
     </ItemsContext.Provider>
   );
