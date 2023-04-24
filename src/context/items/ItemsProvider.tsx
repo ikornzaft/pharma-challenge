@@ -38,7 +38,9 @@ export const ItemsProvider: FC<Props> = ({ children }) => {
       toast.success('Item creado correctamente', {
         autoClose: 2000,
       });
-      router.push('/');
+      setTimeout(() => {
+        router.push('/');
+      }, 2100);
     } catch (error) {
       toast.error('Error creando el item', {
         autoClose: 2000,
@@ -47,8 +49,47 @@ export const ItemsProvider: FC<Props> = ({ children }) => {
     }
   };
 
+  const updateItem = async (item: Item) => {
+    try {
+      const res = await itemsApi.put(`v1/item/${item.id}`, item);
+      dispatch({ type: '[ITEMS] UPDATE ITEM', payload: item });
+      toast.success('Item modificado correctamente', {
+        autoClose: 2000,
+      });
+      setTimeout(() => {
+        router.push(`/item/${item.id}`);
+      }, 2100);
+    } catch (error) {
+      toast.error('Error modificando el item', {
+        autoClose: 2000,
+      });
+      console.log(error);
+    }
+  };
+
+  const deleteItem = async (id: string) => {
+    try {
+      const res = await itemsApi.delete(`v1/item/${id}`);
+      dispatch({ type: '[ITEMS] DELETE ITEM', payload: id });
+      toast.success('Item borrado correctamente', {
+        autoClose: 2000,
+      });
+      setTimeout(() => {
+        getAllItems();
+        router.push('/');
+      }, 2100);
+    } catch (error) {
+      toast.error('Error borrando el item', {
+        autoClose: 2000,
+      });
+      console.log(error);
+    }
+  };
+
   return (
-    <ItemsContext.Provider value={{ ...state, addNewItem, getAllItems }}>
+    <ItemsContext.Provider
+      value={{ ...state, addNewItem, getAllItems, updateItem, deleteItem }}
+    >
       {children}
     </ItemsContext.Provider>
   );

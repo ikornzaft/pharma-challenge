@@ -1,4 +1,5 @@
 import { Item } from '@/interfaces';
+import { useRouter } from 'next/router';
 import React, { FC } from 'react';
 import styled from 'styled-components';
 
@@ -32,11 +33,17 @@ const ItemDescription = styled.p`
 `;
 
 export const ItemComponent: FC<Props> = ({ item }) => {
+  const router = useRouter();
+
+  const handleClick = () => {
+    router.push(`/edit/${item.id}`);
+  };
   return (
     <ItemWrapper>
       <ItemTitle>{item.nombre}</ItemTitle>
       <ItemDescription>{item.codigo}</ItemDescription>
       <ItemDescription>{item.descripcion}</ItemDescription>
+      <button onClick={handleClick}>Editar este item</button>
     </ItemWrapper>
   );
 };
