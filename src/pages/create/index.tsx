@@ -1,7 +1,12 @@
+import { CreateComponent, Layout } from '@/components';
 import React from 'react';
 
 const Create = () => {
-  return <div>Create Page</div>;
+  return (
+    <Layout title="Pharma Challenge - Nuevo Producto">
+      <CreateComponent />
+    </Layout>
+  );
 };
 
 export default Create;

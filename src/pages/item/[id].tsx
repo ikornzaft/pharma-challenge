@@ -1,5 +1,5 @@
 import { GetStaticPaths, GetStaticProps, NextPage } from 'next';
-import { ItemComponent } from '@/components';
+import { ItemComponent, Layout } from '@/components';
 import { Item } from '@/interfaces';
 import { itemsApi } from '@/apis';
 import { getItemInfo } from '@/utils/getItemInfo';
@@ -9,13 +9,15 @@ interface Props {
 }
 
 const ItemPage: NextPage<Props> = ({ item }) => {
-  return <ItemComponent item={item} />;
+  return (
+    <Layout title={`Pharma Challenge - ${item.nombre}`}>
+      <ItemComponent item={item} />
+    </Layout>
+  );
 };
 
 export const getStaticPaths: GetStaticPaths = async (ctx) => {
   const { data: items } = await itemsApi.get<Item[]>('v1/item');
-
-  console.log('ctx: ', ctx);
 
   return {
     paths: items.map((item) => ({
@@ -31,7 +33,6 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
   const { id } = params as { id: string };
 
   const item = await getItemInfo(id);
-  console.log(item);
 
   if (!item) {
     return {

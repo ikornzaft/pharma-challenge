@@ -15,7 +15,7 @@ export const getItemInfo = async (id: string) => {
       imagen,
     } = data;
     return {
-      id,
+      id: id,
       nombre,
       forma_farmaceutica,
       fabricante,

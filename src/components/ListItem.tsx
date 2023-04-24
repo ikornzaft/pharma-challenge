@@ -48,6 +48,7 @@ export const ListItem: FC<Props> = ({ item }) => {
   const router = useRouter();
 
   const handleClick = () => {
+    console.log('ITEM ID: ', item.id);
     router.push(`/item/${item.id}`);
   };
 

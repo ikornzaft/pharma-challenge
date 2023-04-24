@@ -29,7 +29,8 @@ export const ItemsProvider: FC<Props> = ({ children }) => {
   };
 
   const addNewItem = async (item: Item) => {
-    console.log('Add new item');
+    const res = await itemsApi.post('v1/item', item);
+    console.log(res);
   };
 
   return (
