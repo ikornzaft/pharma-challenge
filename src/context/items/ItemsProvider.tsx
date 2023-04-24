@@ -67,9 +67,28 @@ export const ItemsProvider: FC<Props> = ({ children }) => {
     }
   };
 
+  const deleteItem = async (id: string) => {
+    try {
+      const res = await itemsApi.delete(`v1/item/${id}`);
+      dispatch({ type: '[ITEMS] DELETE ITEM', payload: id });
+      toast.success('Item borrado correctamente', {
+        autoClose: 2000,
+      });
+      setTimeout(() => {
+        getAllItems();
+        router.push('/');
+      }, 2100);
+    } catch (error) {
+      toast.error('Error borrando el item', {
+        autoClose: 2000,
+      });
+      console.log(error);
+    }
+  };
+
   return (
     <ItemsContext.Provider
-      value={{ ...state, addNewItem, getAllItems, updateItem }}
+      value={{ ...state, addNewItem, getAllItems, updateItem, deleteItem }}
     >
       {children}
     </ItemsContext.Provider>

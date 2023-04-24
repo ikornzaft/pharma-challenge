@@ -5,7 +5,8 @@ type ItemsActionType =
   | { type: '[ITEMS] GET ALL ITEMS'; payload: Item[] }
   | { type: '[ITEMS] ADD ITEM'; payload: Item }
   | { type: '[ITEMS] REMOVE ITEM'; payload: string }
-  | { type: '[ITEMS] UPDATE ITEM'; payload: Item };
+  | { type: '[ITEMS] UPDATE ITEM'; payload: Item }
+  | { type: '[ITEMS] DELETE ITEM'; payload: string };
 
 export const itemsReducer = (
   state: ItemsState,
@@ -30,6 +31,15 @@ export const itemsReducer = (
       return {
         ...state,
         items: [...otherItems, updatedItem],
+      };
+    case '[ITEMS] DELETE ITEM':
+      const itemToDelay = action.payload;
+      const newItemsArray = state.items.filter((item) => {
+        item.id !== itemToDelay;
+      });
+      return {
+        ...state,
+        items: newItemsArray,
       };
     default:
       return state;

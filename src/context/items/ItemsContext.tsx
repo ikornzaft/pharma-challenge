@@ -6,6 +6,7 @@ interface ContextProps {
   addNewItem: (item: Item) => void;
   getAllItems: () => void;
   updateItem: (item: Item) => void;
+  deleteItem: (id: string) => void;
 }
 
 export const ItemsContext = createContext({} as ContextProps);
