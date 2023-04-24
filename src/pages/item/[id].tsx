@@ -1,19 +1,15 @@
-import { itemsApi } from '@/apis';
-import { Item } from '@/interfaces';
-import { getItemInfo } from '@/utils/getItemInfo';
 import { GetStaticPaths, GetStaticProps, NextPage } from 'next';
+import { ItemComponent } from '@/components';
+import { Item } from '@/interfaces';
+import { itemsApi } from '@/apis';
+import { getItemInfo } from '@/utils/getItemInfo';
 
 interface Props {
   item: Item;
 }
 
 const ItemPage: NextPage<Props> = ({ item }) => {
-  return (
-    <div>
-      <h1>{item.nombre}</h1>
-      <p>{item.descripcion}</p>
-    </div>
-  );
+  return <ItemComponent item={item} />;
 };
 
 export const getStaticPaths: GetStaticPaths = async (ctx) => {

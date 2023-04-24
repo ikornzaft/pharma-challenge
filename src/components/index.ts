@@ -1,3 +1,4 @@
+export * from './ItemComponent';
 export * from './ListContainer';
 export * from './ListItem';
 export * from './Navbar';
