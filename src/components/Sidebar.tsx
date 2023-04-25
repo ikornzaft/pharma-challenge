@@ -39,18 +39,23 @@ export const Sidebar: FC = () => {
 
   return (
     <SidebarWrapper>
-      {formaFarmaceutica.map((forma) => (
-        <div key={forma}>
-          <Checkbox
-            type="checkbox"
-            id={forma}
-            value={forma}
-            checked={selectedFormasFarmaceuticas.includes(forma)}
-            onChange={(event) => handleFormasFarmaceuticasChange(event, forma)}
-          />
-          <label htmlFor={forma}>{forma}</label>
-        </div>
-      ))}
+      <fieldset>
+        <legend>Forma Farmacéutica</legend>
+        {formaFarmaceutica.map((forma) => (
+          <div key={forma}>
+            <Checkbox
+              type="checkbox"
+              id={forma}
+              value={forma}
+              checked={selectedFormasFarmaceuticas.includes(forma)}
+              onChange={(event) =>
+                handleFormasFarmaceuticasChange(event, forma)
+              }
+            />
+            <label htmlFor={forma}>{forma}</label>
+          </div>
+        ))}
+      </fieldset>
     </SidebarWrapper>
   );
 };
