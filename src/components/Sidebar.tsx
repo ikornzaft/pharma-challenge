@@ -7,11 +7,12 @@ import { Checkbox } from './common';
 const SidebarWrapper = styled.div`
   background-color: #fff;
   border-right: 1px solid #ddd;
-  padding: 0.5rem 1rem;
+  padding: 4rem 1rem;
   display: flex;
   justify-content: space-between;
   align-items: center;
   flex-direction: column;
+  width: 20%;
 `;
 
 export const Sidebar: FC = () => {

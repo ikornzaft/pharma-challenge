@@ -1,49 +1,157 @@
 import { Item } from '@/interfaces';
+import Image from 'next/image';
 import { useRouter } from 'next/router';
 import React, { FC } from 'react';
 import styled from 'styled-components';
+import { Button } from './common';
+import { LeftCircleOutlined } from '@ant-design/icons';
+import Link from 'next/link';
 
 interface Props {
   item: Item;
 }
 
-const ItemWrapper = styled.div`
+const Wrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding-top: 5rem;
+`;
+
+const Item = styled.div`
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  background-color: var(--color-white);
+  width: 70%;
+  height: fit-content;
+  padding: 2rem;
+  overflow: hidden;
+  border-radius: 8px;
+`;
+
+const ContentWrapper = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background-color: red;
-  width: 600px;
-  height: 100px;
-  overflow: hidden;
+`;
+
+const ImageWrapper = styled.div`
+  width: 300px;
+  height: 300px;
+  min-width: 300px;
+  max-width: 300px;
+  min-height: 300px;
+  max-height: 300px;
   border-radius: 8px;
-  box-shadow: 0px 10px 7px -3px rgba(0, 0, 0, 0.2);
-  cursor: pointer;
-  &:hover {
-    box-shadow: 0px 10px 7px -3px rgba(0, 0, 0, 0.1);
-    transform: translate(2px, 2px);
-  }
+  overflow: hidden;
+  background-color: var(--color-white);
+`;
+
+const DataWrapper = styled.div`
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1rem;
+  width: 100%;
+  height: 100%;
+  padding: 0 2rem;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  color: var(--color-gray-dark);
 `;
 
 const ItemTitle = styled.h2`
-  font-size: 1.5rem;
+  grid-column-start: span 3;
+  font-weight: 600;
+  font-size: 1.2rem;
 `;
 
 const ItemDescription = styled.p`
+  grid-column-start: span 3;
   font-size: 1rem;
+`;
+
+const SecondaryDescription = styled.p`
+  font-size: 0.9rem;
+`;
+
+const ButtonWrapper = styled.div`
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  width: 100%;
+  margin-right: 4rem;
+`;
+
+const BackIconWrapper = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  top: 0.3rem;
+  left: 1rem;
+  cursor: pointer;
+  color: var(--color-salmon);
+  font-size: 2rem;
+  &:hover {
+    color: var(--color-salmon-dark);
+    transition: all 0.2s ease-in-out;
+    transform: translateX(-3px);
+  }
 `;
 
 export const ItemComponent: FC<Props> = ({ item }) => {
   const router = useRouter();
 
+  console.log(item);
+
   const handleClick = () => {
     router.push(`/edit/${item.id}`);
   };
   return (
-    <ItemWrapper>
-      <ItemTitle>{item.nombre}</ItemTitle>
-      <ItemDescription>{item.codigo}</ItemDescription>
-      <ItemDescription>{item.descripcion}</ItemDescription>
-      <button onClick={handleClick}>Editar este item</button>
-    </ItemWrapper>
+    <Wrapper>
+      <Item>
+        <BackIconWrapper>
+          <Link href="/">
+            <LeftCircleOutlined />
+          </Link>
+        </BackIconWrapper>
+        <ContentWrapper>
+          <ImageWrapper>
+            <Image
+              src={item.imagen}
+              alt={item.nombre}
+              width={300}
+              height={300}
+            />
+          </ImageWrapper>
+          <DataWrapper>
+            <ItemTitle>{item.nombre}</ItemTitle>
+            <ItemDescription>{item.descripcion}</ItemDescription>
+            <SecondaryDescription>
+              <strong>Presentación</strong>: {item.forma_farmaceutica}
+            </SecondaryDescription>
+            <SecondaryDescription>
+              <strong>Laboratorio</strong>: {item.fabricante}
+            </SecondaryDescription>
+            <SecondaryDescription>
+              <strong>Procedencia</strong>: {item.procedencia}
+            </SecondaryDescription>
+            <SecondaryDescription>
+              <strong>Titular</strong>: {item.titular}
+            </SecondaryDescription>
+          </DataWrapper>
+        </ContentWrapper>
+        <ButtonWrapper>
+          <Button type="button" variant="primary" onClick={handleClick}>
+            Editar este item
+          </Button>
+        </ButtonWrapper>
+      </Item>
+    </Wrapper>
   );
 };
