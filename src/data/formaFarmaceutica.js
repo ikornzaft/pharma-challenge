@@ -1,0 +1,18 @@
+export const formaFarmaceutica = [
+  'Gotas orales',
+  'Cápsulas',
+  'Comprimidos',
+  'Jarabes',
+  'Cremas',
+  'Pomadas',
+  'Inyecciones',
+  'Supositorios',
+  'Óvulos',
+  'Inhaladores',
+  'Polvo para solución inyectable',
+  'Suspensiones',
+  'Emulsiones',
+  'Polvos',
+  'Tabletas',
+  'Grageas',
+];

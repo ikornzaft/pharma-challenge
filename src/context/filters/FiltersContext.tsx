@@ -8,6 +8,7 @@ interface ContextProps {
   procedencia_filter: string[];
   titular_filter: string[];
   setNameFilter: (name: string) => void;
+  setFormasFilter: (formas: string[]) => void;
 }
 
 export const FiltersContext = createContext({} as ContextProps);
