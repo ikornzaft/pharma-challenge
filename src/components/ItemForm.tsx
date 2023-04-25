@@ -2,7 +2,7 @@ import { Item } from '@/interfaces';
 import React, { FC } from 'react';
 import styled from 'styled-components';
 import { Button, CustomInput, Select } from './common';
-import { formaFarmaceutica } from '@/data';
+import { fabricantes, formaFarmaceutica, paises, titulares } from '@/data';
 
 interface Props {
   handleSubmit: React.FormEventHandler<HTMLFormElement>;
@@ -57,6 +57,54 @@ export const ItemForm: FC<Props> = ({ handleSubmit, values, setValues }) => {
         {formaFarmaceutica.map((forma) => (
           <option key={forma} value={forma}>
             {forma}
+          </option>
+        ))}
+      </Select>
+      <Select
+        label="Fabricante"
+        value={values.fabricante}
+        onChange={(e) =>
+          setValues((prev) => ({
+            ...prev,
+            fabricante: e.target.value,
+          }))
+        }
+      >
+        {fabricantes.map((fabricante) => (
+          <option key={fabricante} value={fabricante}>
+            {fabricante}
+          </option>
+        ))}
+      </Select>
+      <Select
+        label="Procedencia"
+        value={values.procedencia}
+        onChange={(e) =>
+          setValues((prev) => ({
+            ...prev,
+            procedencia: e.target.value,
+          }))
+        }
+      >
+        {paises.map((pais) => (
+          <option key={pais} value={pais}>
+            {pais}
+          </option>
+        ))}
+      </Select>
+      <Select
+        label="Titular"
+        value={values.titular}
+        onChange={(e) =>
+          setValues((prev) => ({
+            ...prev,
+            titular: e.target.value,
+          }))
+        }
+      >
+        {titulares.map((titular) => (
+          <option key={titular} value={titular}>
+            {titular}
           </option>
         ))}
       </Select>
