@@ -35,6 +35,13 @@ export const FiltersProvider: FC<Props> = ({ children }) => {
     dispatch({ type: '[FILTERS] SET FORMAS FILTER', payload: formas });
   };
 
+  const setFabricantesFilter = (fabricantes: string[]) => {
+    dispatch({
+      type: '[FILTERS] SET FABRICANTES FILTER',
+      payload: fabricantes,
+    });
+  };
+
   // const getAllItems = async () => {
   //   const { data } = await itemsApi.get<Item[]>('v1/item');
   //   dispatch({ type: '[ITEMS] GET ALL ITEMS', payload: data });
@@ -99,7 +106,7 @@ export const FiltersProvider: FC<Props> = ({ children }) => {
 
   return (
     <FiltersContext.Provider
-      value={{ ...state, setNameFilter, setFormasFilter }}
+      value={{ ...state, setNameFilter, setFormasFilter, setFabricantesFilter }}
     >
       {children}
     </FiltersContext.Provider>
