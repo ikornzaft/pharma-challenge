@@ -2,7 +2,7 @@ import React, { FC, useId } from 'react';
 import styled from 'styled-components';
 
 interface Props {
-  onChange: React.ChangeEventHandler<HTMLInputElement>;
+  onChange: React.ChangeEventHandler<HTMLTextAreaElement>;
   value: string;
   label: string;
   [x: string]: any;
@@ -16,9 +16,9 @@ const Wrapper = styled.div`
   width: 70%;
 `;
 
-const Input = styled.input`
+const TextArea = styled.textarea`
   width: 100%;
-  height: 100%;
+  height: 120px;
   border: 1px solid var(--color-gray);
   border-radius: 8px;
   padding: 0.5rem 1rem;
@@ -34,12 +34,17 @@ const Label = styled.label`
   color: var(--color-gray);
 `;
 
-export const CustomInput: FC<Props> = ({ onChange, value, label, ...rest }) => {
-  const inputId = useId();
+export const CustomTextArea: FC<Props> = ({
+  onChange,
+  value,
+  label,
+  ...rest
+}) => {
+  const textAreaId = useId();
   return (
     <Wrapper>
-      {label !== '' && <Label htmlFor={inputId}>{label}</Label>}
-      <Input id={inputId} value={value} onChange={onChange} {...rest} />
+      <Label htmlFor={textAreaId}>{label}</Label>
+      <TextArea id={textAreaId} value={value} onChange={onChange} {...rest} />
     </Wrapper>
   );
 };

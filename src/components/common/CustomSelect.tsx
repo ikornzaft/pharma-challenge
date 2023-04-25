@@ -35,7 +35,7 @@ const Label = styled.label`
   color: var(--color-gray);
 `;
 
-export const Select: FC<Props> = ({
+export const CustomSelect: FC<Props> = ({
   onChange,
   value,
   label,

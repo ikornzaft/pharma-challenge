@@ -5,5 +5,4 @@ export const fabricantes = [
   'Laboratorios Cura',
   'Laboratorios Vida',
   'Laboratorios Vita',
-  'Laboratorios Bienestar',
 ];

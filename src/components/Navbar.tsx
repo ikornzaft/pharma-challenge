@@ -2,6 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import { SearchForm } from './SearchForm';
 import Link from 'next/link';
+import { ExperimentOutlined } from '@ant-design/icons';
 
 const Nav = styled.nav`
   background-color: #fff;
@@ -15,10 +16,27 @@ const Nav = styled.nav`
   z-index: 999;
 `;
 
+const LogoWrapper = styled.div`
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--color-salmon);
+  &:hover {
+    cursor: pointer;
+  }
+`;
+
 export const Navbar = () => {
   return (
     <Nav>
-      <Link href="/">Pharma-Challenge</Link>
+      <Link href="/">
+        <LogoWrapper>
+          <ExperimentOutlined />
+          Pharma-Challenge
+        </LogoWrapper>
+      </Link>
       <SearchForm />
     </Nav>
   );
