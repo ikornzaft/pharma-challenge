@@ -10,9 +10,9 @@ html {
   --color-gray: hsl(225, 11%, 59%);
   --color-gray-light: hsl(220, 50%, 93%);
   --color-white: hsl(0deg 0% 100%);
-  --color-salmon: hsl(29, 100%, 61%);
-  --color-salmon-dark: hsl(29, 87%, 52%);
-  --color-salmon-light: hsl(0, 100%, 91%);
+  --color-salmon: hsl(29, 94%, 57%);
+  --color-salmon-dark: hsl(29, 85%, 48%);
+  --color-salmon-light: hsl(29, 84%, 88%);
 }
 
 body {

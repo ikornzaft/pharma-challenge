@@ -11,6 +11,8 @@ const ListWrapper = styled.div`
   align-items: center;
   flex-direction: column;
   gap: 20px;
+  flex: 1;
+  padding-top: 4rem;
 `;
 
 export const ListContainer: FC<Props> = ({ children }) => {
