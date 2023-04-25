@@ -2,7 +2,7 @@ import { GetStaticPaths, GetStaticProps, NextPage } from 'next';
 import { ItemComponent, Layout } from '@/components';
 import { Item } from '@/interfaces';
 import { itemsApi } from '@/apis';
-import { getItemInfo } from '@/utils/getItemInfo';
+import { getItemInfo } from '@/utils/';
 
 interface Props {
   item: Item;

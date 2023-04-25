@@ -5,6 +5,7 @@ export * from './ItemForm';
 export * from './ListContainer';
 export * from './ListItem';
 export * from './Navbar';
+export * from './SearchForm';
 export * from './Sidebar';
 export * from './common';
 export * from './layouts';
