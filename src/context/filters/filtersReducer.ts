@@ -8,6 +8,10 @@ type FiltersActionType =
   | {
       type: '[FILTERS] SET FORMAS FILTER';
       payload: string[];
+    }
+  | {
+      type: '[FILTERS] SET FABRICANTES FILTER';
+      payload: string[];
     };
 
 export const filtersReducer = (
@@ -24,6 +28,11 @@ export const filtersReducer = (
       return {
         ...state,
         forma_farmaceutica_filter: action.payload,
+      };
+    case '[FILTERS] SET FABRICANTES FILTER':
+      return {
+        ...state,
+        fabricante_filter: action.payload,
       };
     default:
       return state;
