@@ -1,7 +1,7 @@
 import { Item } from '@/interfaces';
 import Image from 'next/image';
 import { useRouter } from 'next/router';
-import React, { FC } from 'react';
+import React, { FC, useState } from 'react';
 import styled from 'styled-components';
 import { Button } from './common';
 import { LeftCircleOutlined } from '@ant-design/icons';
@@ -40,6 +40,9 @@ const ContentWrapper = styled.div`
 `;
 
 const ImageWrapper = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
   width: 300px;
   height: 300px;
   min-width: 300px;
@@ -105,6 +108,8 @@ const BackIconWrapper = styled.div`
 `;
 
 export const ItemComponent: FC<Props> = ({ item }) => {
+  const [imgSrc, setImgSrc] = useState(item.imagen);
+
   const router = useRouter();
 
   console.log(item);
@@ -123,10 +128,13 @@ export const ItemComponent: FC<Props> = ({ item }) => {
         <ContentWrapper>
           <ImageWrapper>
             <Image
-              src={item.imagen}
+              src={imgSrc}
               alt={item.nombre}
               width={300}
               height={300}
+              onError={() => {
+                setImgSrc('/fallbackImg.jpg');
+              }}
             />
           </ImageWrapper>
           <DataWrapper>
