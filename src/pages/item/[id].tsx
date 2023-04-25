@@ -35,12 +35,14 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
   const item = await getItemInfo(id);
 
   if (!item) {
-    return {
-      redirect: {
-        destination: '/',
-        permanent: false,
-      },
-    };
+    if (typeof window === 'undefined') {
+      return {
+        redirect: {
+          destination: '/',
+          permanent: false,
+        },
+      };
+    }
   }
 
   return {
