@@ -1,3 +1,20 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+html {
+  --color-red: hsl(0deg 80% 50%);
+  --color-red-dark: hsl(0, 88%, 43%);
+  --color-blue: hsl(270deg 75% 60%);
+  --color-gray-dark: hsl(212, 22%, 15%);
+  --color-gray: hsl(225, 11%, 59%);
+  --color-gray-light: hsl(220, 50%, 93%);
+  --color-white: hsl(0deg 0% 100%);
+  --color-salmon: hsl(29, 100%, 61%);
+  --color-salmon-dark: hsl(29, 87%, 52%);
+  --color-salmon-light: hsl(0, 100%, 91%);
+}
+
+body {
+  background-color: var(--color-gray-light);
+}
