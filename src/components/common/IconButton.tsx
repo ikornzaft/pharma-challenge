@@ -3,7 +3,7 @@ import React, { Children, FC } from 'react';
 import styled from 'styled-components';
 
 interface Props {
-  variant: 'primary';
+  variant: 'big' | 'small';
   children: React.ReactNode;
   [x: string]: any;
 }
@@ -15,8 +15,6 @@ const Wrapper = styled.div`
 `;
 
 const Btn = styled.button`
-  width: 3rem;
-  height: 3rem;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -24,9 +22,22 @@ const Btn = styled.button`
   background-color: var(--color-salmon);
   color: var(--color-white);
   border-radius: 50%;
-  font-size: 1.2rem;
-  @media ${device.tablet} {
-    font-size: 1.5rem;
+  &.big {
+    width: 3rem;
+    height: 3rem;
+    font-size: 1.2rem;
+    @media ${device.tablet} {
+      font-size: 1.5rem;
+    }
+  }
+  &.small {
+    width: 2rem;
+    height: 2rem;
+    font-size: 1rem;
+    font-size: 1rem;
+    @media ${device.tablet} {
+      font-size: 1.2rem;
+    }
   }
   &:hover {
     cursor: pointer;

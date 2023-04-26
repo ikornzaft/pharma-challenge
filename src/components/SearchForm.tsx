@@ -11,6 +11,10 @@ const Form = styled.form`
   justify-content: center;
   align-items: center;
   gap: 20px;
+  margin-top: 10px;
+  @media ${device.tablet} {
+    margin-top: 0;
+  }
 `;
 
 const CreateButtonWrapper = styled.div`
@@ -50,22 +54,21 @@ export const SearchForm = () => {
       <Button type="submit" variant="primary-small">
         Buscar
       </Button>
-      <CreateButtonWrapper>
-        <Button
-          onClick={() => router.push('/create')}
-          type="button"
-          variant="secondary-small"
-        >
-          Agregar Item
-        </Button>
-      </CreateButtonWrapper>
+      {router.pathname === '/' && (
+        <CreateButtonWrapper>
+          <Button
+            onClick={() => router.push('/create')}
+            type="button"
+            variant="secondary-small"
+          >
+            Agregar Item
+          </Button>
+        </CreateButtonWrapper>
+      )}
       {router.pathname === '/' && (
         <Portal>
           <CreateIconButtonWrapper>
-            <IconButton
-              onClick={() => router.push('/create')}
-              variant="primary"
-            >
+            <IconButton onClick={() => router.push('/create')} variant="big">
               <PlusCircleOutlined />
             </IconButton>
           </CreateIconButtonWrapper>
