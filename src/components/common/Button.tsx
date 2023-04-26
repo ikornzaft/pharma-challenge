@@ -1,3 +1,4 @@
+import { device } from '@/styles';
 import React, { Children, FC } from 'react';
 import styled from 'styled-components';
 
@@ -28,6 +29,10 @@ const Btn = styled.button`
   background-color: var(--color-salmon);
   color: var(--color-white);
   border-radius: 8px;
+  font-size: 0.8rem;
+  @media ${device.tablet} {
+    font-size: 1rem;
+  }
   &:hover {
     cursor: pointer;
     background-color: var(--color-salmon-dark);
