@@ -1,8 +1,10 @@
 import React, { useContext, useState } from 'react';
 import styled from 'styled-components';
 import { useRouter } from 'next/router';
-import { Button, CustomInput } from './common';
+import { Button, CustomInput, IconButton, Portal } from './common';
 import { FiltersContext } from '@/context/filters';
+import { device } from '@/styles';
+import { PlusCircleOutlined } from '@ant-design/icons';
 
 const Form = styled.form`
   display: flex;
@@ -11,11 +13,25 @@ const Form = styled.form`
   gap: 20px;
 `;
 
+const CreateButtonWrapper = styled.div`
+  display: none;
+  @media ${device.tablet} {
+    display: block;
+  }
+`;
+
+const CreateIconButtonWrapper = styled.div`
+  position: absolute;
+  @media ${device.tablet} {
+    display: none;
+  }
+`;
+
 export const SearchForm = () => {
   const { setNameFilter } = useContext(FiltersContext);
   const [value, setValue] = useState('');
-
   const router = useRouter();
+  console.log(router);
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -34,13 +50,27 @@ export const SearchForm = () => {
       <Button type="submit" variant="primary-small">
         Buscar
       </Button>
-      <Button
-        onClick={() => router.push('/create')}
-        type="button"
-        variant="secondary-small"
-      >
-        Agregar Item
-      </Button>
+      <CreateButtonWrapper>
+        <Button
+          onClick={() => router.push('/create')}
+          type="button"
+          variant="secondary-small"
+        >
+          Agregar Item
+        </Button>
+      </CreateButtonWrapper>
+      {router.pathname === '/' && (
+        <Portal>
+          <CreateIconButtonWrapper>
+            <IconButton
+              onClick={() => router.push('/create')}
+              variant="primary"
+            >
+              <PlusCircleOutlined />
+            </IconButton>
+          </CreateIconButtonWrapper>
+        </Portal>
+      )}
     </Form>
   );
 };
